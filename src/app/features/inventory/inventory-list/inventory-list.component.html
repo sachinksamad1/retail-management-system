@@ -1,0 +1,25 @@
+// src/app/features/inventory/inventory-list/inventory-list.component.html
+<div class="inventory-list-container">
+  <app-page-header title="Inventory Management" [actions]="[
+    { label: 'Add New Item', icon: 'add', action: addNewItem.bind(this) }
+  ]"></app-page-header>
+
+  <mat-card>
+    <mat-card-content>
+      <app-filter-bar (filterChange)="applyFilter($event)" placeholder="Search inventory..."></app-filter-bar>
+      
+      <ng-container *ngIf="inventory$ | async as inventory; else loading">
+        <app-data-table
+          [columns]="tableColumns"
+          [data]="inventory"
+          [actions]="tableActions"
+          (rowClick)="onRowClick($event)">
+        </app-data-table>
+      </ng-container>
+      
+      <ng-template #loading>
+        <app-loading-spinner></app-loading-spinner>
+      </ng-template>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,37 @@
+// src/app/features/dashboard/dashboard.component.html
+<div class="dashboard-container">
+  <app-page-header title="Dashboard"></app-page-header>
+
+  <div *ngIf="!isLoading; else loading">
+    <!-- KPI Cards -->
+    <div fxLayout="row wrap" fxLayoutGap="20px grid">
+      <mat-card fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
+        <mat-card-content>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+              <div class="kpi-label">Total Sales</div>
+              <div class="kpi-value">${{ totalSales.toLocaleString() }}</div>
+            </div>
+            <mat-icon class="kpi-icon" color="primary">monetization_on</mat-icon>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
+        <mat-card-content>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+              <div class="kpi-label">Total Products</div>
+              <div class="kpi-value">{{ totalProducts }}</div>
+            </div>
+            <mat-icon class="kpi-icon" color="accent">inventory</mat-icon>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
+        <mat-card-content>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+              <div class="kpi-label">Total Customers</div>
+              <div class="kpi-value">{{ totalCustomers }}
